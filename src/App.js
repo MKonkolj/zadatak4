@@ -1,4 +1,10 @@
+import menuJSON from "./menu.json"
+import MenuItem from "./MenuItem"
+
 function App() {
+
+  console.log(menuJSON);
+
   return (
     <div className="App">
       <main>
@@ -12,6 +18,18 @@ function App() {
           </ul>
         </header>
         <div className="container">
+          {
+            menuJSON.map((item) => {
+            return (<MenuItem
+              key={item.id}
+              title={item.title}
+              category={item.category}
+              price={item.price}
+              img={item.img}
+              desc={item.desc}
+            />)
+          })
+          }
           {/* MENU ITEM
           <div className="menu-item">
             <img src="https://react-projects-5-menu.netlify.app/images/item-1.jpeg" alt="" />

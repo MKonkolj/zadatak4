@@ -29,6 +29,7 @@ h1, h2, h3, h4 {
   line-height: 1.25;
   margin-bottom: .75rem;
   color: #102a42;
+  text-transform: capitalize;
 }
 
 h1 {
@@ -41,6 +42,7 @@ p, li, a {
   line-height: 1.5;
   font-size: 0.875rem;
   font-size: clamp(0.875rem, 0.7578125rem + 0.390625vw, 1rem);
+  text-transform: capitalize;
 }
 
 .nav {
@@ -107,7 +109,9 @@ p, li, a {
 .menu-item-name-price {
   border-bottom: 1px dotted #617d98;
   display: flex;
+  gap: 15px;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .menu-item-name-price p {
