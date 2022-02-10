@@ -1,9 +1,17 @@
+import React from "react";
 import menuJSON from "./menu.json"
 import MenuItem from "./MenuItem"
+import {useState} from "react"
 
 function App() {
 
-  console.log(menuJSON);
+  const [selectedItems, setSelectedItems] = useState(menuJSON)
+
+  const handleFilterItems = (pick) => {
+    setSelectedItems(menuJSON.filter((item) => item.category == pick));
+  }
+
+  const handleFilterItemsAll = () => setSelectedItems(menuJSON)
 
   return (
     <div className="App">
@@ -11,19 +19,18 @@ function App() {
         <header className='nav'>
           <h1>Our Menu</h1>
           <ul className='nav-list'>
-            <li className='nav-item'>All</li>
-            <li className='nav-item'>Breakfast</li>
-            <li className='nav-item'>Lunch</li>
-            <li className='nav-item'>Shakes</li>
+            <li onClick={() => handleFilterItemsAll()} className='nav-item'>All</li>
+            <li onClick={() => handleFilterItems("breakfast")} className='nav-item'>Breakfast</li>
+            <li onClick={() => handleFilterItems("lunch")} className='nav-item'>Lunch</li>
+            <li onClick={() => handleFilterItems("shakes")} className='nav-item'>Shakes</li>
           </ul>
         </header>
         <div className="container">
           {
-            menuJSON.map((item) => {
+            selectedItems.map((item) => {
             return (<MenuItem
               key={item.id}
               title={item.title}
-              category={item.category}
               price={item.price}
               img={item.img}
               desc={item.desc}
